@@ -15,13 +15,17 @@ alter table kv enable row level security;
 drop policy if exists "kv read" on kv;
 drop policy if exists "kv insert" on kv;
 drop policy if exists "kv update" on kv;
+drop policy if exists "kv delete" on kv;
 
 create policy "kv read" on kv for select using (true);
 create policy "kv insert" on kv for insert with check (true);
--- so palpites e revelacoes podem ser regravados; jogadores e sorteio ficam travados
+-- palpites, revelacoes, personagens e descricoes dos universos podem ser regravados;
+-- jogadores e sorteio ficam travados
 create policy "kv update" on kv for update
-  using (col in ('guesses','reveal'))
-  with check (col in ('guesses','reveal'));
+  using (col in ('guesses','reveal','chars','universes','admin'))
+  with check (col in ('guesses','reveal','chars','universes','admin'));
+-- so personagens podem ser apagados
+create policy "kv delete" on kv for delete using (col = 'chars');
 
 -- 2) Pasta publica das fotos de referencia
 insert into storage.buckets (id, name, public)

@@ -5,7 +5,7 @@ Site estatico (um unico `index.html`) com Supabase de banco e de fotos.
 ## Arquivos
 - `index.html` - versao principal (fontes pixel)
 - `index-peak.html` - versao com a fonte Darumadrop One (para usar, renomeie para `index.html`)
-- `supabase.sql` - cria a tabela e a pasta de fotos
+- `supabase.sql` - cria a tabela e a pasta de fotos (rode de novo sempre que atualizar: ele tambem libera personagens e universos)
 - `logos/` - logo em PNG (vermelho, branco, vermelho com sombra verde)
 
 ## Passo a passo
